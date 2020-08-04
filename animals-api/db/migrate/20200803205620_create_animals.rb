@@ -10,6 +10,7 @@ class CreateAnimals < ActiveRecord::Migration[6.0]
       t.boolean :rise
       t.timestamps
       t.string :description 
+      t.string :threats
     end
   end
 end

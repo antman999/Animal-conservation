@@ -5,6 +5,8 @@ class CreateOrganizations < ActiveRecord::Migration[6.0]
       t.string :mission
       t.integer :since
       t.string :rating
+      t.string :img
+      t.string :link
       t.timestamps
     end
   end

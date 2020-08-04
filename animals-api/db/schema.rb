@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 2020_08_03_205853) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "description"
+    t.string "threats"
   end
 
   create_table "backings", force: :cascade do |t|
@@ -41,6 +42,8 @@ ActiveRecord::Schema.define(version: 2020_08_03_205853) do
     t.string "mission"
     t.integer "since"
     t.string "rating"
+    t.string "img"
+    t.string "link"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
