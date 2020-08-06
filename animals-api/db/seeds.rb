@@ -32,15 +32,17 @@ edge =Organization.create!(name:'EDGE',mission:'The EDGE of Existence programme 
 
 nature_conservancy= Organization.create!(name:'The Nature Conservancy',mission:'The Nature Conservancy is a nonprofit, tax-exempt charitable organization (tax identification number 53-0242652) under Section 501(c)(3) of the U.S. Internal Revenue Code. Donations are tax-deductible as allowed by law. Global sites represent either regional branches of The Nature Conservancy or local affiliates of The Nature Conservancy that are separate entities.',img:'https://www.nature.org/content/dam/tnc/nature/en/logos/tnc-logo-white.svg', link:'https://www.nature.org/en-us/about-us/where-we-work/united-states/florida/stories-in-florida/wood-storks-at-disney-wilderness-preserve/')
 
-alabama1=State.create!(animal_id:indian_manatee.id,organization_id:savethemanatee.id,state:'Alabama',short:'AR'),
+alabama = State.create!(state:'Alabama', short:'AR')
 
+animal_state_alabama1 = Animalstate.create!(animal_id:indian_manatee.id,state_id:alabama.id)
+animal_state_alabama2= Animalstate.create!(animal_id:flattened_musk_turtle.id,state_id:alabama.id)
+animal_state_alabama3= Animalstate.create!(animal_id:wood_stork.id,state_id:alabama.id)
+animal_state_alabama4= Animalstate.create!(animal_id:black_pine_snake.id,state_id:alabama.id)
 
-alabama3=State.create!(animal_id:flattened_musk_turtle.id,organization_id:edge.id,state:'Alabama',short:'AR')
-
-alabama4=State.create!(animal_id:wood_stork.id,organization_id:nature_conservancy.id,state:'Alabama',short:'AR')
-
-alabama2=State.create!(animal_id:black_pine_snake.id,organization_id:nature_conservancy.id,state:'Alabama',short:'AR')
-
+state_organization_alabama1 = Stateorganization.create!(organization_id:savethemanatee.id,state_id:alabama.id)
+state_organization_alabama2 = Stateorganization.create!(organization_id:edge.id,state_id:alabama.id)
+state_organization_alabama3 = Stateorganization.create!(organization_id:nature_conservancy.id,state_id:alabama.id)
+state_organization_alabama1 = Stateorganization.create!(organization_id:nature_conservancy.id,state_id:alabama.id)
 
 
 
@@ -68,12 +70,16 @@ iucn=Organization.create!(name:'IUCN',mission:'IUCN, International Union for Con
 
 audubon = Organization.create!(name:'AUDUBON',mission:'The National Audubon Society protects birds and the places they need, today and tomorrow, throughout the Americas using science, advocacy, education, and on-the-ground conservation.', since:1905,img:'https://nas-national-prod.s3.amazonaws.com/styles/bird_illustration/s3/2131_Sibl_9780307957900_art_r1.jpg?itok=W1XdznW0', link:'https://www.audubon.org/field-guide/bird/spectacled-eider')
 
-alaska1=State.create!(animal_id:polar_bear.id,organization_id:savethepolarbear.id,state:'Alaska',short:'AK')
-alaska2=State.create!(animal_id:polar_bear.id,organization_id:iucn.id,state:'Alaska',short:'AK')
-alaska3=State.create!(animal_id:eider.id,organization_id:iucn.id,state:'Alaska',short:'AK')
-alaska4=State.create!(animal_id:eider.id,organization_id:audubon.id,state:'Alaska',short:'AK')
-alaska5=State.create!(animal_id:albatross.id,organization_id:iucn.id,state:'Alaska',short:'AK')
-alaska6=State.create!(animal_id:albatross.id,organization_id:audubon.id,state:'Alaska',short:'AK')
+alaska = State.create!(state:"Alaska", short:'AK')
+
+animal_state_alaska1 = Animalstate.create!(animal_id:polar_bear.id,state_id:alaska.id)
+animal_state_alaska2= Animalstate.create!(animal_id:eider.id,state_id:alaska.id)
+animal_state_alaska3 = Animalstate.create!(animal_id:albatross.id,state_id:alaska.id)
+state_organization_alaska1 = Stateorganization.create!(organization_id:savethepolarbear.id,state_id:alaska.id)
+state_organization_alaska2 = Stateorganization.create!(organization_id:iucn.id,state_id:alaska.id)
+state_organization_alaska3 = Stateorganization.create!(organization_id:audubon.id,state_id:alaska.id)
+
+
 
 # ARIZONA
 blackferret = Animal.create!(species:'Mammal',name:'Black-footed Ferret',count:206,img:'https://ecos.fws.gov/docs/species_images/doc5012-250px-thumbnail.jpg',critical:true,rise:false,description:'The black-footed ferret is 18 to 24 inches long, including a 5 to 6 inch tail. It weighs only one-and-a-half to two-and-a-half pounds, with males slightly larger than females. The black-footed ferret is well adapted to its prairie environment. Its color and markings blend so well with grassland soils and plants, that it is hard to detect until it moves. It is a slender, wiry animal with a black face mask, black feet, and a black-tipped tail. The rest of its short, sleek fur is a yellow-buff color, lighter on the belly and nearly white on the forehead, muzzle, and throat.', threats:'Housing & urban areas,Hunting & trapping terrestrial animals')
@@ -100,14 +106,38 @@ northernjp = Organization.create!(name:'Northern Jaguar Project',mission:'We for
 awi = Organization.create!(name:'ANIMAL WELFARE INSTITUTE',mission:'Since 1951, the Animal Welfare Institute has been alleviating suffering inflicted on animals by humans. In the early years, AWI founder Christine Stevens sought to end the cruel treatment of animals in experimental laboratories. Inevitably, her work expanded to take on other animal welfare causes.
 ', since:1951,img:'https://awionline.org/themes/awi/logo.svg', link:'https://awionline.org/cases/protection-ocelots')
 
-arizona1=State.create!(animal_id:blackferret.id,organization_id:wildEarth.id,state:'Arizona',short:'AZ')
-arizona2=State.create!(animal_id:blackferret.id,organization_id:afs.id,state:'Arizona',short:'AZ')
-arizona3=State.create!(animal_id:jaguarA.id,organization_id:panthera.id,state:'Arizona',short:'AZ')
-arizona4=State.create!(animal_id:jaguarA.id,organization_id:northernjp.id,state:'Arizona',short:'AZ')
-arizona5=State.create!(animal_id:jaguarA.id,organization_id:awi.id,state:'Arizona',short:'AZ')
-arizona6=State.create!(animal_id:ocelot.id,organization_id:awi.id,state:'Arizona',short:'AZ')
-arizona7=State.create!(animal_id:ocelot.id,organization_id:panthera.id,state:'Arizona',short:'AZ')
+arizona = State.create!(state:'Arizona',short:'AZ')
 
+animal_state_arizona1 = Animalstate.create!(animal_id:blackferret.id,state_id:arizona.id)
+animal_state_arizona2 = Animalstate.create!(animal_id:jaguarA.id,state_id:arizona.id)
+animal_state_arizona3 = Animalstate.create!(animal_id:ocelot.id,state_id:arizona.id)
+
+state_organization_arizona = Stateorganization.create!(organization_id:wildEarth.id,state_id:arizona.id)
+state_organization_arizona1 = Stateorganization.create!(organization_id:afs.id,state_id:arizona.id)
+state_organization_arizona2= Stateorganization.create!(organization_id:panthera.id,state_id:arizona.id)
+state_organization_arizona3= Stateorganization.create!(organization_id:iucn.id,state_id:arizona.id)
+state_organization_arizona4= Stateorganization.create!(organization_id:wildEarth.id,state_id:arizona.id)
+
+# california
+
+# colorado
+# canadalynx = Animal.create!(species:'Mammal',name:'Canada Lynx',count:206,img:'https://ecos.fws.gov/docs/species_images/doc4979-250px-thumbnail.jpg',critical:false,rise:true,description:'The lynx is a medium-sized cat with long legs, large, well-furred paws, long tufts on the ears, and a short, black-tipped tail. The winter pelage of the lynx is dense and has a grizzled appearance with grayish-brown mixed with buff or pale brown fur on the back, and grayish-white or buff-white fur on the belly, legs and feet. Summer pelage of the lynx is more reddish to gray-brown. Adult males average 10 kilograms (22 pounds) in weight and 85 centimeters (33.5 inches) in length (head to tail), and females average 8.5 kilograms (19 pounds) and 82 centimeters (32 inches). The lynxs long legs and large feet make it highly adapted for hunting in deep snow.', threats:'Dams & water management/use
+# Other ecosystem modifications
+# ')
+
+# colorado1=State.create!(animal_id:blackferret.id,organization_id:wildEarth.id,state:'Colorado',short:'CO')
+# colorado2=State.create!(animal_id:blackferret.id,organization_id:afs.id,state:'Colorado',short:'CO')
+# colorado3=State.create!(animal_id:canadalynx.id,organization_id:panthera.id,state:'Colorado',short:'CO')
+
+# #connecticut
+# bat1 = Animal.create!(species:'Mammal',name:'Northern Long-eared Bat',count:nil,img:'https://ecos.fws.gov/docs/species_images/doc5015-250px-thumbnail.jpg',critical:false,rise:true,description:'The northern long-eared bat is a medium-sized bat about 3 to 3.7 inches in length but with a wingspan of 9 to 10 inches. As its name suggests, this bat is distinguished by its long ears, particularly as compared to other bats in its genus, Myotis, which are actually bats noted for their small ears (Myotis means mouse-eared).', threats:'Dams & water management/use
+# Other ecosystem modifications
+# ')
+
+# cbd = Organization.create!(name:'Center for Biological Diversity',mission:'At the Center for Biological Diversity, we believe that the welfare of human beings is deeply linked to nature — to the existence in our world of a vast diversity of wild animals and plants. Because diversity has intrinsic value, and because its loss impoverishes society, we work to secure a future for all species, great and small, hovering on the brink of extinction. We do so through science, law and creative media, with a focus on protecting the lands, waters and climate that species need to survive.', since:nil,img:'https://www.biologicaldiversity.org/w/static/images/cbd-press-header.a3d7726d6e35.gif', link:'https://biologicaldiversity.org/w/news/press-releases/court-northern-long-eared-bat-was-unlawfully-denied-endangered-species-protection-2020-01-29/#:~:text=Northern%20long%2Deared%20bat.,endangered%20species%20and%20wild%20places.')
+
+# connecticut1 = State.create!(animal_id:bat1.id,organization_id:cbd.id,state:'Connecticut',short:'CT')
+# delaware1 = State.create!(animal_id:bat1.id,organization_id:cbd.id,state:'Delaware',short:'DE')
 
 
 #  t.string :species

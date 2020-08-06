@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_03_205853) do
+ActiveRecord::Schema.define(version: 2020_08_04_213042) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,13 @@ ActiveRecord::Schema.define(version: 2020_08_03_205853) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "description"
     t.string "threats"
+  end
+
+  create_table "animalstates", force: :cascade do |t|
+    t.integer "animal_id"
+    t.integer "state_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "backings", force: :cascade do |t|
@@ -61,9 +68,14 @@ ActiveRecord::Schema.define(version: 2020_08_03_205853) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "states", force: :cascade do |t|
-    t.integer "animal_id"
+  create_table "stateorganizations", force: :cascade do |t|
     t.integer "organization_id"
+    t.integer "state_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "states", force: :cascade do |t|
     t.string "state"
     t.string "short"
     t.datetime "created_at", precision: 6, null: false

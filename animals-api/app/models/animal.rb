@@ -1,4 +1,4 @@
 class Animal < ApplicationRecord
-  has_many :states
-  has_many :organizations, through: :states
+  has_many :animal_states
+  has_many :states, through: :animal_states
 end
