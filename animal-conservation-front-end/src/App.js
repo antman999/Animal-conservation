@@ -1,39 +1,91 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import NavBar from './NavBar';
-import Home from './Home'
-
+import Home from './Home';
+import AnimalShowPage  from './AnimalShowPage'
+import SignUpForm from './SignUpForm';
+import LogInForm from './LogInForm';
 
 const STATESAPI = 'http://localhost:3000/api/v1/states.json';
 
 export class App extends Component {
 	state = {
 		states: [],
-		selectedState:''
+		selectedState: '',
+		currentUser:null
 	};
 
 	componentDidMount() {
 		fetch(STATESAPI)
 			.then(resp => resp.json())
 			.then(resp => this.setState({ states: resp }));
+		const user_id = localStorage.user_id
+		if (user_id) {
+			fetch('http://localhost:3000/api/v1/auto_login', {
+				headers: {
+					"Authorization":user_id
+				}
+			})
+				.then(resp => resp.json())
+				.then(resp => {
+					if (resp.errors) {
+					alert(resp.errors)
+					} else {
+						this.setState({
+							currentUser:resp
+						})
+				}
+			} )
+		}
 	}
 
- handleStateClick = e => {
-	 this.setState({ selectedState: e.target.id })
-  }
+	setUser = user => {
+	
+		this.setState({
+			currentUser:user
+		}, () => {
+			localStorage.user_id = user.id
+				this.props.history.push('/')
+		})
+	}
 
+	logOut = () => 	{this.setState({
+			currentUser:null
+		}, () => {
+			localStorage.removeItem("user_id")
+				this.props.history.push('/')
+		})
+	}
+
+	handleStateClick = e => {
+		this.setState({ selectedState: e.target.id });
+	};
 
 	render() {
-	
+		let clickedState = this.state.states.find(
+			state => state.short === this.state.selectedState
+		);
 		return (
 			<div className='app'>
-			<NavBar />
+				<NavBar currentUser={this.state.currentUser}/>
 				<Switch>
-					<Route exact path='/animals/:id' render={() => <p>hi</p>} />
+					<Route
+						exact
+						path='/animals/:id'
+						render={routerProps => <AnimalShowPage {...routerProps} />}
+					/>
 
-					<Route exact path='/login' render={() => <p>hi</p>} />
+					<Route
+						exact
+						path='/login'
+						render={routerProps => <LogInForm setUser={this.setUser} />}
+					/>
 
-					<Route exact path='/signup' render={() => <p>hi</p>} />
+					<Route
+						exact
+						path='/signup'
+						render={routerProps => <SignUpForm setUser={this.setUser} />}
+					/>
 
 					<Route exact path='/animals' render={() => <p>hi</p>} />
 
@@ -41,7 +93,17 @@ export class App extends Component {
 
 					<Route exact path='/profile' render={() => <p>hi</p>} />
 
-					<Route exact path='/' render={(routerProps) => <Home handleStateClick={this.handleStateClick} {...routerProps}/>}/>
+					<Route
+						exact
+						path='/'
+						render={routerProps => (
+							<Home
+								handleStateClick={this.handleStateClick}
+								stateAnimals={clickedState}
+								{...routerProps}
+							/>
+						)}
+					/>
 				</Switch>
 			</div>
 		);

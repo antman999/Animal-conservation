@@ -3,4 +3,8 @@ class Api::V1::AnimalsController < ApplicationController
     animals = Animal.all
     render json: animals
   end
+  def show 
+    animal = Animal.find_by(id:params[:id])
+    render json: animal
+  end
 end

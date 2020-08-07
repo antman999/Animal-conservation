@@ -10,7 +10,24 @@ export class Home extends Component {
       <>
         <Header />
         <Map handleStateClick={this.props.handleStateClick} />
-        <AnimalsFromMap />
+       
+        {this.props.stateAnimals?this.props.stateAnimals.animals.map(animals =>
+          <AnimalsFromMap
+            id={animals.id}
+            name={animals.name}
+            img={animals.img}
+            count={animals.count}
+            description={animals.description}
+            habitat={animals.habitat}
+            critical={animals.critical}
+            rise={animals.rise}
+            species={animals.species}
+            threats={animals.threats}
+            propspush={this.props.history}
+          />
+    
+        ):''}
+      
         
       </>
     );

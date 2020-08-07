@@ -14,14 +14,23 @@ const NavBar= props => {
 				<Link className='navAll' to='/animals'>
 					On The Rise
 				</Link>
-				<Link className='navSignUp' to='/signup'>
-				signup
-			</Link>
-			<Link className='navLogIn' to='/login'>
-				login
-			</Link>
+				<div>
+					{props.currentUser ? (
+						''
+					) : (
+						<Link className='navSignUp' to='/signup'>
+							signup
+						</Link>
+					)}
+					{props.currentUser ? (
+						props.currentUser.username
+					) : (
+						<Link className='navLogIn' to='/login'>
+							login
+						</Link>
+					)}
+				</div>
 			</div>
-		
 		</>
 	);
 }
