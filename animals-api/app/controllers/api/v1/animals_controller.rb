@@ -5,6 +5,6 @@ class Api::V1::AnimalsController < ApplicationController
   end
   def show 
     animal = Animal.find_by(id:params[:id])
-    render json: animal
+    render json: animal, include:[:sightings,:states]
   end
 end

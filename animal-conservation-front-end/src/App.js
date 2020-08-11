@@ -5,6 +5,9 @@ import Home from './Home';
 import AnimalShowPage  from './AnimalShowPage'
 import SignUpForm from './SignUpForm';
 import LogInForm from './LogInForm';
+import AllAnimalsContainer from './AllAnimalsContainer';
+import Profile from './Profile';
+
 
 const STATESAPI = 'http://localhost:3000/api/v1/states.json';
 
@@ -12,13 +15,17 @@ export class App extends Component {
 	state = {
 		states: [],
 		selectedState: '',
-		currentUser:null
+		currentUser:[],
+		animals:[]
 	};
 
 	componentDidMount() {
 		fetch(STATESAPI)
 			.then(resp => resp.json())
 			.then(resp => this.setState({ states: resp }));
+		fetch('http://localhost:3000/api/v1/animals.json')
+			.then(resp => resp.json())
+			.then(resp => this.setState({ animals: resp }));
 		const user_id = localStorage.user_id
 		if (user_id) {
 			fetch('http://localhost:3000/api/v1/auto_login', {
@@ -67,12 +74,12 @@ export class App extends Component {
 		);
 		return (
 			<div className='app'>
-				<NavBar currentUser={this.state.currentUser}/>
+				<NavBar currentUser={this.state.currentUser} />
 				<Switch>
 					<Route
 						exact
 						path='/animals/:id'
-						render={routerProps => <AnimalShowPage {...routerProps} />}
+						render={routerProps => <AnimalShowPage  {...routerProps} />}
 					/>
 
 					<Route
@@ -87,11 +94,26 @@ export class App extends Component {
 						render={routerProps => <SignUpForm setUser={this.setUser} />}
 					/>
 
-					<Route exact path='/animals' render={() => <p>hi</p>} />
+					<Route
+						exact
+						path='/animals'
+						render={routerProps => (
+							<AllAnimalsContainer
+								allAnimals={this.state.animals}
+								{...routerProps}
+							/>
+						)}
+					/>
 
 					<Route exact path='/organizations' render={() => <p>hi</p>} />
 
-					<Route exact path='/profile' render={() => <p>hi</p>} />
+					<Route
+						exact
+						path='/profile'
+						render={routerProps => (
+							<Profile currentUser={this.state.currentUser} {...routerProps} />
+						)}
+					/>
 
 					<Route
 						exact

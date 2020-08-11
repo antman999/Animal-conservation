@@ -34,7 +34,7 @@ Rails.application.routes.draw do
       resources :users
       post '/signup', to: 'users#create'
       post '/login', to: 'users#login'
-      get '/auto_login', to:'user#auto_login'
+      get '/auto_login', to:'users#auto_login'
     end
   end
   namespace :api do

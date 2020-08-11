@@ -10,7 +10,7 @@ class Api::V1::UsersController < ApplicationController
 
   )
   if user.save
-   render json: user
+   render json: user, include:[:sightings,:animals,:organizations]
   else
     render json:{errors:user.errors.full_messages}
   end
@@ -19,7 +19,7 @@ class Api::V1::UsersController < ApplicationController
   def login
    user=User.find_by(username:params[:username])
    if user && user.authenticate(params[:password])
-     render json: user
+     render json: user, include:[:sightings,:animals,:organizations]
    else
     render json: {errors:'Another snag one of them is wrong :( '}
    end
@@ -27,7 +27,7 @@ class Api::V1::UsersController < ApplicationController
 
   def auto_login
     user = User.find_by(id:request.headers["Authorization"])
-    render json: user
+    render json: user, include:[:sightings,:animals,:organizations]
   end
   
 end

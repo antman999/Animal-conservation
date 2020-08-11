@@ -1,4 +1,6 @@
 class Animal < ApplicationRecord
-  has_many :animal_states
-  has_many :states, through: :animal_states
+  has_many :animalstates
+  has_many :states, through: :animalstates
+    has_many :sightings
+  has_many :users, through: :sightings
 end

@@ -1,36 +1,40 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import  Navbar from 'react-bootstrap/Navbar';
-const NavBar= props => {
+
+const NavBar = props => {
 	return (
 		<>
-			<div className='navigation'>
-				<Link className='logo' to='/'>
-					home
-				</Link>
-				<Link className='navAll' to='/animals'>
-					all animals
-				</Link>
-				<Link className='navAll' to='/animals'>
-					On The Rise
-				</Link>
-				<div>
-					{props.currentUser ? (
-						''
-					) : (
-						<Link className='navSignUp' to='/signup'>
-							signup
-						</Link>
-					)}
-					{props.currentUser ? (
-						props.currentUser.username
-					) : (
-						<Link className='navLogIn' to='/login'>
-							login
-						</Link>
-					)}
+			<header>
+				<div className='container'>
+					<h1 className='logo'>
+						<Link to='/'>home</Link>
+					</h1>
+
+					<nav>
+						<ul>
+						
+							<li>
+								<Link to='/animals'>all animals</Link>
+							</li>
+							<li>
+								<Link to='/animals'>On The Rise</Link>
+							</li>
+							<li>
+								{props.currentUser.length > 1 ? '' : <Link to='/signup'>sign-up</Link>}
+							</li>
+							<li>
+								{props.currentUser.length > 1 ? (
+									<Link to='/profile'>{props.currentUser.username}</Link>
+								) : (
+									<Link to='/login'>log In</Link>
+								)}
+							</li>
+						</ul>
+					</nav>
 				</div>
-			</div>
+			</header>
+
+		
 		</>
 	);
 }
