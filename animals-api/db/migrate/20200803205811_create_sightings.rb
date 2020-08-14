@@ -7,8 +7,9 @@ class CreateSightings < ActiveRecord::Migration[6.0]
       t.string :city
       t.integer :zipcode
       t.string :address
-      t.integer :lat
-      t.integer :long
+      t.string :comment
+      t.decimal :lat, precision: 10, scale: 6
+    t.decimal :lng, precision: 10, scale: 6
       t.timestamps
     end
   end

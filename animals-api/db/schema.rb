@@ -62,15 +62,16 @@ ActiveRecord::Schema.define(version: 2020_08_04_213042) do
     t.string "city"
     t.integer "zipcode"
     t.string "address"
-    t.integer "lat"
-    t.integer "long"
+    t.string "comment"
+    t.decimal "lat", precision: 10, scale: 6
+    t.decimal "lng", precision: 10, scale: 6
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "stateorganizations", force: :cascade do |t|
     t.integer "organization_id"
-    t.integer "state_id"
+    t.integer "animal_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -89,6 +90,7 @@ ActiveRecord::Schema.define(version: 2020_08_04_213042) do
     t.string "username"
     t.string "password_digest"
     t.string "bio"
+    t.string "img"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

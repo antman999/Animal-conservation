@@ -1,13 +1,15 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { Icon } from 'semantic-ui-react';
 
 const NavBar = props => {
 	return (
 		<>
-			<header>
+			<header className='navi'>
 				<div className='container'>
 					<h1 className='logo'>
-						<Link to='/'>home</Link>
+						<Link to='/'>BioDiversity 	<Icon
+														name='paw'/> </Link>
 					</h1>
 
 					<nav>
@@ -20,10 +22,10 @@ const NavBar = props => {
 								<Link to='/animals'>On The Rise</Link>
 							</li>
 							<li>
-								{props.currentUser.length > 1 ? '' : <Link to='/signup'>sign-up</Link>}
+								{props.currentUser.id ? '' : <Link to='/signup'>sign-up</Link>}
 							</li>
 							<li>
-								{props.currentUser.length > 1 ? (
+								{props.currentUser.id ? (
 									<Link to='/profile'>{props.currentUser.username}</Link>
 								) : (
 									<Link to='/login'>log In</Link>

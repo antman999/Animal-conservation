@@ -8,6 +8,8 @@
 Animal.destroy_all
 State.destroy_all
 Organization.destroy_all
+ Animalstate.destroy_all
+ Stateorganization.destroy_all
 
 #ALABAMA
 indian_manatee = Animal.create!(species:'Mammal',name:'Indian Manatee',count:6500,img:'https://ecos.fws.gov/docs/species_images/doc3661-250px-thumbnail.jpg',critical:false,rise:false,description:'	
@@ -39,10 +41,10 @@ animal_state_alabama2= Animalstate.create!(animal_id:flattened_musk_turtle.id,st
 animal_state_alabama3= Animalstate.create!(animal_id:wood_stork.id,state_id:alabama.id)
 animal_state_alabama4= Animalstate.create!(animal_id:black_pine_snake.id,state_id:alabama.id)
 
-state_organization_alabama1 = Stateorganization.create!(organization_id:savethemanatee.id,state_id:alabama.id)
-state_organization_alabama2 = Stateorganization.create!(organization_id:edge.id,state_id:alabama.id)
-state_organization_alabama3 = Stateorganization.create!(organization_id:nature_conservancy.id,state_id:alabama.id)
-state_organization_alabama1 = Stateorganization.create!(organization_id:nature_conservancy.id,state_id:alabama.id)
+state_organization_alabama1 = Stateorganization.create!(organization_id:savethemanatee.id,animal_id:indian_manatee.id)
+state_organization_alabama2 = Stateorganization.create!(organization_id:edge.id,animal_id:flattened_musk_turtle.id)
+state_organization_alabama3 = Stateorganization.create!(organization_id:nature_conservancy.id,animal_id:wood_stork.id)
+state_organization_alabama1 = Stateorganization.create!(organization_id:nature_conservancy.id,animal_id:black_pine_snake.id)
 
 
 
@@ -75,9 +77,9 @@ alaska = State.create!(state:"Alaska", short:'AK')
 animal_state_alaska1 = Animalstate.create!(animal_id:polar_bear.id,state_id:alaska.id)
 animal_state_alaska2= Animalstate.create!(animal_id:eider.id,state_id:alaska.id)
 animal_state_alaska3 = Animalstate.create!(animal_id:albatross.id,state_id:alaska.id)
-state_organization_alaska1 = Stateorganization.create!(organization_id:savethepolarbear.id,state_id:alaska.id)
-state_organization_alaska2 = Stateorganization.create!(organization_id:iucn.id,state_id:alaska.id)
-state_organization_alaska3 = Stateorganization.create!(organization_id:audubon.id,state_id:alaska.id)
+state_organization_alaska1 = Stateorganization.create!(organization_id:savethepolarbear.id,animal_id:polar_bear.id)
+state_organization_alaska2 = Stateorganization.create!(organization_id:iucn.id,animal_id:albatross.id)
+state_organization_alaska3 = Stateorganization.create!(organization_id:audubon.id,animal_id:eider.id)
 
 
 
@@ -112,11 +114,11 @@ animal_state_arizona1 = Animalstate.create!(animal_id:blackferret.id,state_id:ar
 animal_state_arizona2 = Animalstate.create!(animal_id:jaguarA.id,state_id:arizona.id)
 animal_state_arizona3 = Animalstate.create!(animal_id:ocelot.id,state_id:arizona.id)
 
-state_organization_arizona = Stateorganization.create!(organization_id:wildEarth.id,state_id:arizona.id)
-state_organization_arizona1 = Stateorganization.create!(organization_id:afs.id,state_id:arizona.id)
-state_organization_arizona2= Stateorganization.create!(organization_id:panthera.id,state_id:arizona.id)
-state_organization_arizona3= Stateorganization.create!(organization_id:iucn.id,state_id:arizona.id)
-state_organization_arizona4= Stateorganization.create!(organization_id:wildEarth.id,state_id:arizona.id)
+state_organization_arizona = Stateorganization.create!(organization_id:wildEarth.id,animal_id:blackferret.id)
+state_organization_arizona1 = Stateorganization.create!(organization_id:afs.id,animal_id:blackferret.id)
+state_organization_arizona2= Stateorganization.create!(organization_id:panthera.id,animal_id:jaguarA.id)
+state_organization_arizona3= Stateorganization.create!(organization_id:iucn.id,animal_id:jaguarA.id)
+state_organization_arizona4= Stateorganization.create!(organization_id:wildEarth.id,animal_id:ocelot.id)
 
 # california
 

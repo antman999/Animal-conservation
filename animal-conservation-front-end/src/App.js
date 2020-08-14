@@ -72,6 +72,7 @@ export class App extends Component {
 		let clickedState = this.state.states.find(
 			state => state.short === this.state.selectedState
 		);
+		
 		return (
 			<div className='app'>
 				<NavBar currentUser={this.state.currentUser} />
@@ -79,7 +80,12 @@ export class App extends Component {
 					<Route
 						exact
 						path='/animals/:id'
-						render={routerProps => <AnimalShowPage  {...routerProps} />}
+						render={routerProps => (
+							<AnimalShowPage
+								currentUser={this.state.currentUser}
+								{...routerProps}
+							/>
+						)}
 					/>
 
 					<Route

@@ -1,22 +1,34 @@
 import React from 'react'
-import Image from 'react-bootstrap/Image';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import Container from 'react-bootstrap/Container';
+import { Card, Image, Icon } from 'semantic-ui-react';
 
 const AllAnimalsContainer = (props) => {
+	console.log(props.allAnimals);
   return (
-		<>
-			{props.allAnimals.map(animals => (
-				<Container>
-					<Row>
-						<Col xs={6} md={4}>
-              <Image src={animals.img} thumbnail />
-						</Col>
-					</Row>
-				</Container>
-			))}
-		</>
+		<div className='cc'>
+			<Card.Group itemsPerRow={4}>
+				{props.allAnimals.map(animals => (
+					<Card onClick={() => props.history.push(`/animals/${animals.id}`)}>
+						<Image src={animals.img} wrapped ui={true} />
+						<Card.Content>
+							<Card.Header>{animals.name}</Card.Header>
+							<Card.Meta>{animals.species}</Card.Meta>
+							<Card.Description>
+								{animals.critical
+									? `The ${animals.name} is in a critical state`
+									: `This Species is Endangered`}
+							</Card.Description>
+						</Card.Content>
+						<Card.Content extra>
+							<a>
+								<Icon name='map pin' />
+
+								{animals.states.map(st => (st.state))}
+							</a>
+						</Card.Content>
+					</Card>
+				))}
+			</Card.Group>
+		</div>
 	);
 }
 export default AllAnimalsContainer

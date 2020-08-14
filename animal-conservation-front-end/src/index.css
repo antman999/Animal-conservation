@@ -141,6 +141,7 @@ justify-content: center;
      display: flex;
      line-height: 43px;
      margin-left: 10px;
+         border-bottom: 1px solid #cacacaca;
 }
 .md{
   padding: 20px;
@@ -330,3 +331,140 @@ align-content: flex-end;
   color: white;
   border-bottom: 1px solid #199087;
 }
+
+.cc{
+  display: inline-block;
+  padding: 60px;
+  margin: 20px;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mapping{
+   padding: 0;
+   margin: 0;
+   list-style: none;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   margin-top: 70px;
+}
+
+.dividerS{
+padding: 0;
+margin: 0;
+list-style: none;
+display: flex;
+/* align-items: flex-start;
+justify-content: flex-start; */
+margin-top: 45px;
+
+
+/* width: 50%; */
+}
+
+
+.showpic{
+margin-right: 60px;
+}
+
+.showAnimalCard{
+   width: 55%; 
+   margin-left: 42px;
+}
+
+.des{
+      line-height: 30px;
+      font-family: 'Montserrat';
+      font-style: normal;
+      font-weight: normal;
+      margin-bottom: 35px;
+}
+
+.nameAnimal{
+  margin-top: 10px;
+  margin-bottom: 30px ;
+}
+
+.navi{
+  border-bottom: 1px solid #cacacaca;
+}
+
+.orginfo{
+
+  width: 45%;
+
+
+}
+
+.orgTitle{
+        font-family: 'Montserrat';
+        font-style: bold;
+        font-weight: normal;
+        margin-bottom: 35px;
+        text-align: center;
+}
+
+.orgpic{
+  background-color: black;
+}
+
+.orgmappedtitle{
+   font-family: 'Montserrat';
+   font-style: normal;
+   font-weight: normal;
+   margin-left: 10px !important;
+}
+
+.dividerProfile{
+  display: flex;
+  margin-top: 30px;
+}
+
+.profilePicSide{
+  width: 75%;
+}
+
+.ProfileInfo{
+  width: 90% ;
+  margin-top: 40px;
+}
+
+.first{
+  font-family: 'Montserrat';
+  font-style: 'bold-700';
+  font-weight: 'Bold 700';
+  font-size: 55px;
+   margin-top: 0px !important;
+   margin-bottom: 0px !important;
+   color: #F2994A;
+}
+
+.addinfo{
+  width: 75%;
+ 
+}
+
+.addh{
+  font-family: 'Montserrat';
+  font-style: bold;
+  font-weight: normal;
+  margin-bottom: 8px;
+  color: #F2994A;
+}
+
+.uinfo{
+  font-family: 'Montserrat' !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+}
+
+.logo{
+color: #F2994A !important;
+
+}
+
+
+

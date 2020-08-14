@@ -1,4 +1,4 @@
 class Stateorganization < ApplicationRecord
   belongs_to :organization
-  belongs_to :state
+  belongs_to :animal
 end

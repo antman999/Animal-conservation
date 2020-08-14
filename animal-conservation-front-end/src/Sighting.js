@@ -11,36 +11,47 @@ export class Sighting extends Component {
 
   state = {
     lat: 0,
-    lng:0
+    lng: 0,
+    center:{}
   }
-  componentDidUpdate() {
-     Geocode.setApiKey(`${process.env.REACT_APP_GOOGLE_MAPS_API_KEY}`);
-			Geocode.setLanguage('en');
-			Geocode.fromAddress(`${this.props.statePicked}`).then(
-				response => { 
-					this.setState({
-						lat: response.results[0].geometry.location.lat,
-            lng: response.results[0].geometry.location.lng,
-            
-					},);
-					// const { lat, lng } = response.results[0].geometry.location;
-					// console.log(lat, lng);
-				},
-				error => {
-					console.error(error);
-				}
-			);
-  }
- 
+
+  // componentDidMount() {
+  //     this.setCenter()
+  // }
+
+  // setCenter = () => {
+  //   Geocode.setApiKey(`${process.env.REACT_APP_GOOGLE_MAPS_API_KEY}`);
+	// 	Geocode.setLanguage('en');
+	// 	Geocode.fromAddress(`${this.props.statePicked}`).then(
+	// 		response => {
+	// 			this.setState({
+	// 				center: {
+	// 					lat: response.results[0].geometry.location.lat,
+	// 					lng: response.results[0].geometry.location.lng,
+	// 				},
+	// 			});
+	// 			// const { lat, lng } = response.results[0].geometry.location;
+	// 			// console.log(lat, lng);
+	// 			console.log(this.state.center);
+	// 		},
+	// 		error => {
+	// 			console.error(error);
+	// 		}
+	// 	);
+  // }
+
   render() {
-  ;
+console.log(this.state.center)
+    // const center = { lat: this.state.center.lat, lng: this.state.center.lng }
+    // !this.state.center.lat && this.setCenter()
     return (
 			<div>
         <div style={{ width: '100vw', height: '50vh' }}>
-					<GoogleMap
-						defaultZoom={8}
-						center={{ lat:this.state.lat, lng:this.state.lng }}
-					/>
+          {/* <GoogleMap
+            defaultZoom={8}
+            center={this.state.center}
+       
+					/> */}
 					
 				</div>
 			</div>

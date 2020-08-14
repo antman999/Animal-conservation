@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-
+import { Card } from 'semantic-ui-react';
+const src = '/images/wireframe/image.png';
 export class SignUpForm extends Component {
 	state = {
 		first: '',
@@ -10,9 +11,11 @@ export class SignUpForm extends Component {
 		password: '',
 		passwordConfirmation: '',
 		bio: '',
+		img: ''
 	};
 
 	handleChange = e => {
+		console.log(e.target.value)
 		this.setState({ [e.target.name]: e.target.value });
   };
   
@@ -126,7 +129,7 @@ export class SignUpForm extends Component {
 							/>
 						</div>
 						<div className='FormField'>
-							<label className='FormField__Label'>Confrim password</label>
+							<label className='FormField__Label'>Confirm password</label>
 							<input
 								className='FormField__Input'
 								name='passwordConfirmation'
@@ -136,6 +139,8 @@ export class SignUpForm extends Component {
 								placeholder='password confirmation'
 							/>
 						</div>
+
+				
 						<div className='FormField'>
 							<button className='FormField__Button mr-20' type='submit'>
 								Sign Up

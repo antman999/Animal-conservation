@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
 const Header = props => {
 	return (
 		<>
@@ -17,9 +18,10 @@ const Header = props => {
 					<p className='actualheadinginfo'>
 						View The top Organizations making a change.
 					</p>
-					<Button basic color='orange'>
-						Take Me There
-					</Button>
+					<Link to='/animals'><Button basic color='orange'>
+				Take Me There	
+					</Button></Link>
+					
 				</div>
 				<div className='animalsHome'>
 					<h3 className='headinginfo'>View All Animals</h3>
@@ -27,9 +29,10 @@ const Header = props => {
 						The current rate of extinction is 1,000 to 10,000 times higher than
 						the natural extinction rate.
 					</p>
-					<Button basic color='orange'>
+						<Link to='/animals'><Button basic color='orange'>
 						Take Me There
-					</Button>
+					</Button></Link>
+					
 				</div>
 			</div>
 		</>
