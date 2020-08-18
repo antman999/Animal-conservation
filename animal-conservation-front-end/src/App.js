@@ -7,6 +7,7 @@ import SignUpForm from './SignUpForm';
 import LogInForm from './LogInForm';
 import AllAnimalsContainer from './AllAnimalsContainer';
 import Profile from './Profile';
+import Organizations from './Organizations';
 
 
 const STATESAPI = 'http://localhost:3000/api/v1/states.json';
@@ -15,14 +16,18 @@ export class App extends Component {
 	state = {
 		states: [],
 		selectedState: '',
-		currentUser:[],
-		animals:[]
+		currentUser:null,
+		animals: [],
+		organizations:[]
 	};
 
 	componentDidMount() {
 		fetch(STATESAPI)
 			.then(resp => resp.json())
 			.then(resp => this.setState({ states: resp }));
+		fetch('http://localhost:3000/api/v1/organizations.json')
+			.then(resp => resp.json())
+			.then(resp => this.setState({ organizations: resp }));
 		fetch('http://localhost:3000/api/v1/animals.json')
 			.then(resp => resp.json())
 			.then(resp => this.setState({ animals: resp }));
@@ -60,7 +65,7 @@ export class App extends Component {
 			currentUser:null
 		}, () => {
 			localStorage.removeItem("user_id")
-				this.props.history.push('/')
+				this.props.history.push('/login')
 		})
 	}
 
@@ -111,13 +116,19 @@ export class App extends Component {
 						)}
 					/>
 
-					<Route exact path='/organizations' render={() => <p>hi</p>} />
+					<Route
+						exact
+						path='/organizations'
+						render={routerProps => (
+							<Organizations {...routerProps} organizations={this.state.organizations} />
+						)}
+					/>
 
 					<Route
 						exact
 						path='/profile'
 						render={routerProps => (
-							<Profile currentUser={this.state.currentUser} {...routerProps} />
+							<Profile logOut={this.logOut} {...routerProps} />
 						)}
 					/>
 

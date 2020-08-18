@@ -463,8 +463,84 @@ margin-right: 60px;
 
 .logo{
 color: #F2994A !important;
+font-family: 'Montserrat';
+font-style: 'bold-700';
+font-weight: 'Bold 700';
+ font-size: 35px;
 
 }
 
+.ogsupport{
+  text-align: center;
+    font-family: 'Montserrat' !important;
+    font-style: normal !important;
+    font-weight: normal !important;
+    color: #F2994A !important;
+    margin-top: 50px;
+}
+
+.pdiv{
+  display: flex;
+}
+
+.parentCards{
+display: inline-block;
+padding: 60px;
+margin: 20px;
+list-style: none;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+
+.cfora{
+  margin-top: 80px;
+  text-align: center;
+  font-family: 'Montserrat' !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+}
+
+.tmd{
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      border-color: black;
+      border: 1px solid #e8e8e8;
+}
+
+.orgpic1, .orgName{
+  align-self: center;
+  text-align: center;
+  font-family: 'Montserrat' !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+}
+.orgpic1{
+      min-height: 140px;
+     
+}
+
+path,
+circle{
+ -webkit-transition: all .3s ease-out;
+ transition: all .3s ease-out;
 
 
+}
+path:hover,
+circle:hover {
+  stroke: #000000 !important;
+  stroke-width: 2px;
+  stroke-linejoin: round;
+  fill: #CD3700 !important;
+  cursor: pointer;
+  -webkit-transform: translate(0px, 0px);
+  transform: translate(0px, -5px);
+  
+
+}
+
+.ppic{
+  box-shadow: 0 0 10px #3e3d3d;
+}

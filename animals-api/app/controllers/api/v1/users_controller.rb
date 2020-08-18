@@ -11,7 +11,8 @@ class Api::V1::UsersController < ApplicationController
   first: params[:first],
   last: params[:last],
   state: params[:state],
-  bio: params[:bio]
+  bio: params[:bio],
+  img: params[:img]
 
   )
   if user.save
@@ -36,8 +37,8 @@ class Api::V1::UsersController < ApplicationController
   end
 
   def show
-    #  user = User.find_by(id:params[:id])
-    # render json: user, include:[:sightings,:states,:stateorganizations,:organizations]
+     user = User.find_by(id:params[:id])
+    render json: user, include:[:sightings,:backings,:organizations]
   end
   
 end

@@ -9,6 +9,7 @@ export class AnimalShowPage extends Component {
 		animalShown: [],
 		statePicked: '',
 		organizations: [],
+		sightings:[]
 	};
 
 	componentDidMount() {
@@ -21,45 +22,37 @@ export class AnimalShowPage extends Component {
 					animalShown: data,
 					statePicked: data.states[0].state,
 					organizations: data.organizations,
+					sightings : data.sightings
 				})
-		);
-		if (this.props.currentUser.id) {
-			fetch(
-				`http://localhost:3000/api/v1/users/${this.props.currentUser.id}.json`
 			);
-		}
+	
 	}
 
 	handleLike = e => {
-		// console.log(e, this.props.currentUser.id)
-		//   fetch('http://localhost:3000/api/v1/backings', {
-		// 	method: 'POST',
-		// 	headers: {
-		// 		'Content-Type': 'application/json',
-		// 		'Accept': 'application/json',
-    //   },
-    //   body: JSON.stringify({
-    //     organization_id:e,
-    //     user_id: this.props.currentUser.id
-    //   })
-    // })
-    //   .then(resp => resp.json())
-    //     .then(resp => {
-    //       if (resp.errors) {
-    //     alert(resp.errors)
-    //       } else {
-    //       console.log(resp)
-    //   }
-		// })
-		// let user = this.props.currentUser
-		// console.log(user.organizations.find(f=>(f.id === e)))
-    } 
-	
+
+		  fetch('http://localhost:3000/api/v1/backings', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+				'Accept': 'application/json',
+		  },
+		  body: JSON.stringify({
+		    organization_id:e,
+		    user_id: this.props.currentUser.id
+		  })
+		})
+		  .then(resp => resp.json())
+		    .then(resp => {
+		      if (resp.errors) {
+		    alert(resp.errors)
+		      } else {
+		      console.log(resp)
+		  }
+		})
+	};
 
 	render() {
-		let user = this.props.currentUser.organizations;
-		console.log(this.props.currentUser);
-		console.log(this.state.organizations);
+		console.log(this.state.sightings)
 		return (
 			<>
 				<div className='dividerS'>
@@ -118,31 +111,26 @@ export class AnimalShowPage extends Component {
 													{og.since ? `Since ${og.since}` : 'Since not Found'}
 												</Label>
 											</span>
-											{this.props.currentUser.id ? (
+											{this.props.currentUser ? (
 												<span className='stay'>
 													{' '}
-							{user.filter(	f => f.id === og.id?
-								<div>
-										<Icon
+													{this.props.currentUser.organizations.filter(
+														org => org.id === og.id
+													).length > 0 ? (
+														<Icon
 															name='like'
 															color='red'
 															onClick={() => {
 																this.handleDislike(og.id);
 															}}
 														/>
-								</div>
-								
-								:
-								<div>
-										<Icon
+													) : (
+														<Icon
 															name='like'
 															onClick={() => {
 																this.handleLike(og.id);
 															}}
 														/>
-								</div>
-							
-														
 													)}
 												</span>
 											) : (
@@ -165,7 +153,10 @@ export class AnimalShowPage extends Component {
 					containerElement={<div style={{ width: `100%`, height: `100%` }} />}
 					mapElement={<div style={{ width: '100vw', height: '70vh' }} />}
 					name={this.state.animalShown.name}
+					aid={this.state.animalShown.id}
 					statePicked={this.state.statePicked}
+					sightings={this.state.sightings}
+					userid={this.props.currentUser}
 				/>
 			</>
 		);

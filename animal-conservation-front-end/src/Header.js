@@ -18,7 +18,7 @@ const Header = props => {
 					<p className='actualheadinginfo'>
 						View The top Organizations making a change.
 					</p>
-					<Link to='/animals'><Button basic color='orange'>
+					<Link to='/organizations'><Button basic color='orange'>
 				Take Me There	
 					</Button></Link>
 					

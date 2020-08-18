@@ -10,6 +10,7 @@ State.destroy_all
 Organization.destroy_all
  Animalstate.destroy_all
  Stateorganization.destroy_all
+ Sighting.destroy_all
 
 #ALABAMA
 indian_manatee = Animal.create!(species:'Mammal',name:'Indian Manatee',count:6500,img:'https://ecos.fws.gov/docs/species_images/doc3661-250px-thumbnail.jpg',critical:false,rise:false,description:'	
@@ -86,14 +87,12 @@ state_organization_alaska3 = Stateorganization.create!(organization_id:audubon.i
 # ARIZONA
 blackferret = Animal.create!(species:'Mammal',name:'Black-footed Ferret',count:206,img:'https://ecos.fws.gov/docs/species_images/doc5012-250px-thumbnail.jpg',critical:true,rise:false,description:'The black-footed ferret is 18 to 24 inches long, including a 5 to 6 inch tail. It weighs only one-and-a-half to two-and-a-half pounds, with males slightly larger than females. The black-footed ferret is well adapted to its prairie environment. Its color and markings blend so well with grassland soils and plants, that it is hard to detect until it moves. It is a slender, wiry animal with a black face mask, black feet, and a black-tipped tail. The rest of its short, sleek fur is a yellow-buff color, lighter on the belly and nearly white on the forehead, muzzle, and throat.', threats:'Housing & urban areas,Hunting & trapping terrestrial animals')
 
-jaguarA = Animal.create!(species:'Mammal',name:'Jaguar',count:nil,img:'https://s2r.iucnredlist.org/sis2_images/D5Pd3R39-D9d083-XCs.jpg',critical:false,rise:false,description:'A large, heavy-bodied, big-headed cat. Yellowish to tawny, spotted with black rosettes or rings in horizontal rows along the back and sides; most rings are tan inside, with 1 or 2 black spots. Legs, head, and tail have smaller, solid spots, usually giving way to incomplete bands near the end of the tail.', threats:'Oil & gas drilling,
-Mining & quarrying')
+
 
 mxwolf = Animal.create!(species:'Mammal',name:'Mexican wolf',count:nil,img:'https://ecos.fws.gov/docs/species_images/doc4961-250px-thumbnail.jpg',critical:false,rise:true,description:'Endangered; A species in danger of extinction throughout all or a significant portion of its range.', threats:'Oil & gas drilling,
 Mining & quarrying')
 
-ocelot = Animal.create!(species:'Mammal',name:'Ocelot',count:nil,img:'https://s2r.iucnredlist.org/sis2_images/799697121.jpg',critical:true,rise:false,description:'Ocelot population densities throughout its entire range varies widely from 2.5 to 160/100 km². At a continental scale, Ocelot densities decrease with latitude and increase with rainfall (Di Bitetti et al. 2008). Primary productivity seems to determine the abundance of this wild cat across their range, but at a local scale their abundance may be affected by logging and poaching or by competition with other species.', threats:'Hunting & trapping terrestrial animals,
-Logging & wood harvesting')
+
 
 wildEarth = Organization.create!(name:'WildEarth Guardians',mission:'WildEarth Guardians protects and restores the wildlife, wild places, wild rivers, and health of the American West.
 Driven by passion, we’ve tackled some of the West’s most difficult and pressing conservation challenges over the past three decades.', since:nil,img:'https://wildearthguardians.org/wp-content/uploads/2018/08/weg-logo-1.svg', link:'https://wildearthguardians.org/wildlife-conservation/endangered-species-list/mammals/black-footed-ferret/?gclid=CjwKCAjwjqT5BRAPEiwAJlBuBeLCKrFtSae9072mVh2cmcgqUp7JkoxETfnMh9eg9Yeo3uz4aVII5xoCaDEQAvD_BwE')
@@ -111,14 +110,13 @@ awi = Organization.create!(name:'ANIMAL WELFARE INSTITUTE',mission:'Since 1951, 
 arizona = State.create!(state:'Arizona',short:'AZ')
 
 animal_state_arizona1 = Animalstate.create!(animal_id:blackferret.id,state_id:arizona.id)
-animal_state_arizona2 = Animalstate.create!(animal_id:jaguarA.id,state_id:arizona.id)
-animal_state_arizona3 = Animalstate.create!(animal_id:ocelot.id,state_id:arizona.id)
+animal_state_arizona2 = Animalstate.create!(animal_id:mxwolf.id,state_id:arizona.id)
 
 state_organization_arizona = Stateorganization.create!(organization_id:wildEarth.id,animal_id:blackferret.id)
 state_organization_arizona1 = Stateorganization.create!(organization_id:afs.id,animal_id:blackferret.id)
-state_organization_arizona2= Stateorganization.create!(organization_id:panthera.id,animal_id:jaguarA.id)
-state_organization_arizona3= Stateorganization.create!(organization_id:iucn.id,animal_id:jaguarA.id)
-state_organization_arizona4= Stateorganization.create!(organization_id:wildEarth.id,animal_id:ocelot.id)
+state_organization_arizona2= Stateorganization.create!(organization_id:panthera.id,animal_id:mxwolf.id)
+state_organization_arizona3= Stateorganization.create!(organization_id:iucn.id,animal_id:mxwolf.id)
+state_organization_arizona4= Stateorganization.create!(organization_id:wildEarth.id,animal_id:mxwolf.id)
 
 # california
 

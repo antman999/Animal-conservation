@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { Card } from 'semantic-ui-react';
-const src = '/images/wireframe/image.png';
+import { Card, Image, Grid } from 'semantic-ui-react';
+
 export class SignUpForm extends Component {
 	state = {
 		first: '',
@@ -11,48 +11,64 @@ export class SignUpForm extends Component {
 		password: '',
 		passwordConfirmation: '',
 		bio: '',
-		img: ''
+		img:'',
 	};
 
 	handleChange = e => {
-		console.log(e.target.value)
+
 		this.setState({ [e.target.name]: e.target.value });
-  };
-  
-  handleSubmit = e => {
-    e.preventDefault()
-    let { first, last, state, username, password, passwordConfirmation, bio } = this.state
-    if (password === passwordConfirmation) {
-      fetch('http://localhost:3000/api/v1/signup', {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json',
-				'Accept': 'application/json',
-      },
-      body: JSON.stringify({
-        first: first,
-        last: last,
-        state: state,
-        username: username,
-        password: password,
-        bio: bio
-      })
-    })
-      .then(resp => resp.json())
-        .then(resp => {
-          if (resp.errors) {
-        alert(resp.errors)
-          } else {
-            this.props.setUser(resp)
-      }
-    })
-    } else {
-      alert('oops you hit a snag. Your passwords dont match')
-    }
-  
-  }
+	};
+
+	handleImg = e => {
+		console.log(e.target.name);
+			this.setState({ [e.target.name]: (e.target.value = e.target.src) });
+	}
+
+	handleSubmit = e => {
+		e.preventDefault();
+		let {
+			first,
+			last,
+			state,
+			username,
+			password,
+			passwordConfirmation,
+			bio,
+			img
+		} = this.state;
+		if (password === passwordConfirmation) {
+			fetch('http://localhost:3000/api/v1/signup', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+					Accept: 'application/json',
+				},
+				body: JSON.stringify({
+					first: first,
+					last: last,
+					state: state,
+					username: username,
+					password: password,
+					bio: bio,
+					img: img
+				}),
+			})
+				.then(resp => resp.json())
+				.then(resp => {
+					if (resp.errors) {
+						alert(resp.errors);
+					} else {
+						this.props.setUser(resp)
+					
+					}
+				});
+		} else {
+			alert('oops you hit a snag. Your passwords dont match');
+		}
+	};
 
 	render() {
+		console.log(this.state)
 		return (
 			<div className='app_login'>
 				<div className='app_aside'></div>
@@ -139,8 +155,47 @@ export class SignUpForm extends Component {
 								placeholder='password confirmation'
 							/>
 						</div>
+						<div className='FormField'>
+							<label className='FormField__Label'>
+								Select a Profile Picture
+							</label>
+							<Card.Group itemsPerRow={4}>
+								<Card
+									raised
+									image='https://defenders.org/sites/default/files/styles/square/public/2019-12/mexican_gray_wolf_flipped_wolf_conservation_center.jpg?h=56fa5926&itok=lULlVPo4'
+									circular
+									onClick={this.handleImg}
+									value={this.state.img}
+									name='img'
+								/>
+								<Card
+									raised
+									image='https://kmph.com/resources/media/9f3b725e-20d5-4b20-b885-379722f8b98e-large1x1_AP20022860052546.jpg?1579793385894'
+									circular
+									onClick={this.handleImg}
+									value={this.state.img}
+									name='img'
+								/>
 
-				
+								<Card
+									raised
+									image='https://cdn.shopify.com/s/files/1/1372/5395/articles/Leatherback_800x.jpg?v=1591634432'
+									circular
+									onClick={this.handleImg}
+									value={this.state.img}
+									name='img'
+								/>
+								<Card
+									raised
+									image='https://defenders.org/sites/default/files/styles/square/public/2019-04/florida_panther_fstop_foundation_header.jpg?h=984b0d80&itok=i1HlGArb'
+									circular
+									onClick={this.handleImg}
+									value={this.state.img}
+									name='img'
+								/>
+							</Card.Group>
+						</div>
+
 						<div className='FormField'>
 							<button className='FormField__Button mr-20' type='submit'>
 								Sign Up
