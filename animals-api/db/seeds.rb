@@ -118,6 +118,41 @@ state_organization_arizona2= Stateorganization.create!(organization_id:panthera.
 state_organization_arizona3= Stateorganization.create!(organization_id:iucn.id,animal_id:mxwolf.id)
 state_organization_arizona4= Stateorganization.create!(organization_id:wildEarth.id,animal_id:mxwolf.id)
 
+# Texas
+leatherback = Animal.create!(species:'Reptile',name:'Leatherback sea turtle',img:'https://ecos.fws.gov/docs/species_images/doc3727-250px-thumbnail.jpg',critical:true,rise:true,description:'The leatherback is the largest, deepest diving, and most migratory and wide ranging of all sea turtles. The adult leatherback can reach 4 to 8 feet in length and 500 to 2000 pounds in weight. Its shell is composed of a mosaic of small bones covered by firm, rubbery skin with seven longitudinal ridges or keels. The skin is predominantly black with varying degrees of pale spotting; including a notable pink spot on the dorsal surface of the head in adults. A toothlike cusp is located on each side of the gray upper jaw; the lower jaw is hooked anteriorly. The paddle-like clawless limbs are black with white margins and pale spotting.', threats:'Commercial & industrial areas
+Tourism & recreation areas')
+
+hawksbill =  Animal.create!(species:'Reptile',name:'Hawksbill Sea Turtle',img:'https://ecos.fws.gov/docs/species_images/doc4876-250px-thumbnail.jpg',count:2000, critical:true,rise:false,description:'The endangered Hawksbill Sea Turtle is one of seven species of sea turtles found throughout the world. One of the smaller sea turtles, it has overlapping scutes (plates) that are thicker than those of other sea turtles. This protects them from being battered against sharp coral and rocks during storm events.
+Adults range in size from 30 to 36 inches (0.8-1.0 meters) carapace length, and weigh 100 to 200 pounds (45-90 kilograms). Its carapace (upper shell) is an attractive dark brown with faint yellow streaks and blotches and a yellow plastron (under shell). The name "hawksbill" refers to the turtles prominent hooked beak.', threats:'Oil & gas drilling')
+
+jaguardi =  Animal.create!(species:'mammal',name:'Gulf Coast Jaguarundi',img:'https://ecos.fws.gov/docs/species_images/doc4898-250px-thumbnail.jpg',count:nil, critical:false,rise:true,description:'Slightly larger than a domestic cat; appearance is unlike any other cat â looks more like a large weasel or otter; uniform in color with a dark gray-brown to chestnut brown coat; darker animals usually found in the dense forest while the lighter individuals are found in more arid and open areas; body is long and low with short legs; small, flattened head with weasel-like ears and narrow brown eyes; long, flattened tail', threats:'Hunting & trapping terrestrial animals')
+
+leatherbacktrust = Organization.create!(name:'The Leather Back Trust',mission:'The Leatherback Trust is a non-profit organization dedicated to saving the leatherback sea turtle. Our mission is to promote the conservation of leatherbacks and other turtles at risk of extinction.', since:1980,img:'https://media-exp1.licdn.com/dms/image/C4D1BAQEEpdl4Mo5aSQ/company-background_10000/0?e=2159024400&v=beta&t=uU8e2Sdt3_Vvs4GRmRC7eB0OYysguh1Ct-uS-PNGJwY', link:'https://www.leatherback.org/')
+
+latortu = Organization.create!(name:'LA TORTUGA FELiZ ',mission:'La tortuga feliz is a non profit organisation, based in Costa Rica, whose aims are the protection of sea turtles with the help of volunteers. The participation of volunteers contributes to the improvement of the living conditions and education of the local inhabitants.
+
+These local inhabitants guard/patrol the beach (Caribbean coast of Costa Rica) together with volunteers, collect the turtle eggs and bring these eggs to a hatchery which is manned by volunteers on a 24 hours basis. Volunteers also participate in the care for and study of recuperating adult turtles in the turtle rescue and rehabilitation centre.', since:2006,img:'https://www.latortugafeliz.com/cms/wp-content/uploads/2013/12/logo_web_v3.png', link:'https://www.latortugafeliz.com/tag/leatherback/?gclid=CjwKCAjwm_P5BRAhEiwAwRzSO_wv6arU9X4Xfa0fhJcqXK-PYhFqPkjDW16Y4P2-i1kIYyYoDUF4xRoCYj0QAvD_BwE')
+
+wwf = Organization.create!(name:'World Wild Life ',mission:'WWF works with local communities to reduce turtle consumption of leatherback turtles and eggs. Our efforts help create awareness of the threats leatherbacks face and communicate the importance of protecting them. We also train and equip local rangers to protect turtles from poaching and patrol nesting beaches. In the Coral Triangle, we support community efforts to protect leatherback nest sites and launch ecotourism businesses.', since:1961,img:'https://upload.wikimedia.org/wikipedia/en/2/24/WWF_logo.svg', link:'https://www.worldwildlife.org/about/history')
+
+
+iss= Organization.create!(name:'International Society for endangered Cats',mission:'To aid in the conservation of small wild cat species through education, public awareness and support for scientific field projects.', since:1990,img:nil, link:'https://wildcatconservation.org/wild-cats/south-america/jaguarundi/')
+
+texas = State.create!(state:'Texas', short:'TX')
+
+animal_state_texas1 = Animalstate.create!(animal_id:leatherback.id,state_id:texas.id)
+animal_state_texas2 = Animalstate.create!(animal_id:hawksbill.id,state_id:texas.id)
+animal_state_texas3 = Animalstate.create!(animal_id:jaguardi.id,state_id:texas.id)
+
+state_organization_texas1 = Stateorganization.create!(organization_id:wildEarth.id,animal_id:leatherback.id)
+state_organization_texas2 = Stateorganization.create!(organization_id:leatherbacktrust.id,animal_id:leatherback.id)
+state_organization_texas3 = Stateorganization.create!(organization_id:latortu.id,animal_id:leatherback.id)
+state_organization_texas4 = Stateorganization.create!(organization_id:wwf.id,animal_id:hawksbill.id)
+state_organization_texas5 = Stateorganization.create!(organization_id:latortu.id,animal_id:hawksbill.id)
+state_organization_texas6 = Stateorganization.create!(organization_id:wwf.id,animal_id:jaguardi.id)
+state_organization_texas7 = Stateorganization.create!(organization_id:iss.id,animal_id:jaguardi.id)
+state_organization_texas8 = Stateorganization.create!(organization_id:awi.id,animal_id:jaguardi.id)
+
 # california
 
 # colorado

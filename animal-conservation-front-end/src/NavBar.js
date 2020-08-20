@@ -20,7 +20,7 @@ const NavBar = props => {
 								<Link to='/organizations'>Organizations</Link>
 							</li>
 							<li>
-								<Link to='/animals'>On The Rise</Link>
+								<Link to='/rise'>On The Rise</Link>
 							</li>
 							<li>
 								{props.currentUser ? '' : <Link to='/signup'>sign-up</Link>}

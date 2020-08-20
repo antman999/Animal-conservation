@@ -9,7 +9,8 @@ export class AnimalShowPage extends Component {
 		animalShown: [],
 		statePicked: '',
 		organizations: [],
-		sightings:[]
+		sightings: [],
+		toggle:''
 	};
 
 	componentDidMount() {
@@ -29,7 +30,7 @@ export class AnimalShowPage extends Component {
 	}
 
 	handleLike = e => {
-
+		this.setState({toggle:'red'})
 		  fetch('http://localhost:3000/api/v1/backings', {
 			method: 'POST',
 			headers: {
@@ -52,7 +53,7 @@ export class AnimalShowPage extends Component {
 	};
 
 	render() {
-		console.log(this.state.sightings)
+		console.log(this.state.toggle)
 		return (
 			<>
 				<div className='dividerS'>
@@ -125,7 +126,8 @@ export class AnimalShowPage extends Component {
 															}}
 														/>
 													) : (
-														<Icon
+															<Icon
+															color={this.state.toggle}
 															name='like'
 															onClick={() => {
 																this.handleLike(og.id);

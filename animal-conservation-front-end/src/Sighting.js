@@ -8,7 +8,7 @@ import {
 } from 'react-google-maps';
 import Geocode from 'react-geocode';
 import Paw from './Paw_Print.svg'
-import { formatRelative } from 'date-fns';
+import moment from 'moment'
 
 export class Sighting extends Component {
 	state = {
@@ -34,9 +34,7 @@ export class Sighting extends Component {
 						lng: response.results[0].geometry.location.lng,
 					},
 				});
-				// const { lat, lng } = response.results[0].geometry.location;
-				// console.log(lat, lng);
-				console.log(this.state.center);
+			
 			},
 			error => {
 				console.error(error);
@@ -55,6 +53,7 @@ export class Sighting extends Component {
 	};
 
 	newMarker = e => {
+		if (this.props.userid) {
 			this.setState(prevState => ({
 				markers: {
 					lat: e.latLng.lat(),
@@ -82,6 +81,11 @@ export class Sighting extends Component {
 						console.log(resp);
 					}
 				});
+		}
+		else {
+			alert('You must be logged in to use this Feature')
+		}
+			
 	
 	};
 	// ()=>this.marker()
@@ -89,7 +93,7 @@ export class Sighting extends Component {
 	render() {
 		const center = { lat: this.state.center.lat, lng: this.state.center.lng };
 		!this.state.center.lat && this.setCenter();
-console.log(this.props.sightings);
+
 			const mark = (
 				<Marker
 					key={`${this.state.markers.lat}-${this.state.markers.lng}`}
@@ -119,14 +123,38 @@ console.log(this.props.sightings);
 					lng: parseFloat(this.state.selectedMarker.lng),
 				}}>
 				<div>
-					<h4>
-						{this.props.name} spotted at{' '}
-						{this.state.selectedMarker.created_at}
-					</h4>
+					<span role='img' aria-label='bear'>
+						{this.props.name} spotted{' '}
+					</span>{' '}
+			
+					<span>
+						{moment(this.state.selectedMarker.created_at).format(
+							'dddd, MMMM Do YYYY'
+						)}
+					</span>
 					{/* <p>Spotted {formatRelative(selected.time, new Date())}</p> */}
 				</div>
 			</InfoWindow>
 		) : null;
+
+		const newMark = (this.props.sightings.map(s => (
+			<Marker
+				key={s.id}
+				position={{
+					lat: parseFloat(s.lat),
+					lng: parseFloat(s.lng),
+				}}
+				icon={{
+					url: Paw,
+					origin: new window.google.maps.Point(0, 0),
+					anchor: new window.google.maps.Point(15, 15),
+					scaledSize: new window.google.maps.Size(30, 30),
+				}}
+				onClick={() => {
+					this.setP(s);
+				}}
+			/>
+		)))
 
 		return (
 			<div>
@@ -136,31 +164,14 @@ console.log(this.props.sightings);
 						center={this.state.center}
 						options={{
 							disableDefaultUI: true,
-							zoomControl: true
+							zoomControl: true,
 						}}
 						onClick={e => {
 							this.newMarker(e);
 						}}>
-						{this.props.sightings.map(s => (
-							<Marker
-								key={s.id}
-								position={{
-									lat: parseFloat(s.lat),
-									lng: parseFloat(s.lng),
-								}}
-								icon={{
-									url: Paw,
-									origin: new window.google.maps.Point(0, 0),
-									anchor: new window.google.maps.Point(15, 15),
-									scaledSize: new window.google.maps.Size(30, 30),
-								}}
-								onClick={() => {
-									this.setP(s);
-								}}
-							/>
-						))}
-						{info}
-						{mark}
+						{this.props.userid ? newMark : null}
+						{this.props.userid ? info : null}
+						{this.props.userid? mark: null}
 					</GoogleMap>
 				</div>
 			</div>

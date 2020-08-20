@@ -15,13 +15,11 @@ export class SignUpForm extends Component {
 	};
 
 	handleChange = e => {
-
 		this.setState({ [e.target.name]: e.target.value });
 	};
 
 	handleImg = e => {
-		console.log(e.target.name);
-			this.setState({ [e.target.name]: (e.target.value = e.target.src) });
+			this.setState({ img: (e.target.value = e.target.src) });
 	}
 
 	handleSubmit = e => {
@@ -68,7 +66,6 @@ export class SignUpForm extends Component {
 	};
 
 	render() {
-		console.log(this.state)
 		return (
 			<div className='app_login'>
 				<div className='app_aside'></div>

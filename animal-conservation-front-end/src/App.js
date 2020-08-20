@@ -8,6 +8,8 @@ import LogInForm from './LogInForm';
 import AllAnimalsContainer from './AllAnimalsContainer';
 import Profile from './Profile';
 import Organizations from './Organizations';
+import Footer from './Footer';
+import OnRise from './OnRise';
 
 
 const STATESAPI = 'http://localhost:3000/api/v1/states.json';
@@ -118,9 +120,23 @@ export class App extends Component {
 
 					<Route
 						exact
+						path='/rise'
+						render={routerProps => (
+							<OnRise
+								allAnimals={this.state.animals}
+								{...routerProps}
+							/>
+						)}
+					/>
+
+					<Route
+						exact
 						path='/organizations'
 						render={routerProps => (
-							<Organizations {...routerProps} organizations={this.state.organizations} />
+							<Organizations
+								{...routerProps}
+								organizations={this.state.organizations}
+							/>
 						)}
 					/>
 
@@ -144,6 +160,7 @@ export class App extends Component {
 						)}
 					/>
 				</Switch>
+				<Footer currentUser={this.state.currentUser} />
 			</div>
 		);
 	}

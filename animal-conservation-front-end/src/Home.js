@@ -7,14 +7,14 @@ import { Container, Card, Placeholder, Segment, Grid} from 'semantic-ui-react';
 
 export class Home extends Component {
 
-  render() { 
-    
+	render() {
     return (
 			<>
 				<Header />
 				<Map handleStateClick={this.props.handleStateClick} />
 				<h1 className='cfora'>
-					These are some of the most endangered species in
+					These are some of the most endangered species in{' '}
+					{this.props.stateAnimals?this.props.stateAnimals.state:''}
 				</h1>
 				<div className='parentCards'>
 					<Card.Group itemsPerRow={3}>

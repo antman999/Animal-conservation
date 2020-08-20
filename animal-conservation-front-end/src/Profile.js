@@ -29,7 +29,6 @@ export class Profile extends Component {
 	}
 
 	render() {
-		console.log(this.state.user.img);
 		return (
 			<>
 				<div className='dividerProfile'>
